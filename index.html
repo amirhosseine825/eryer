@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه مد و لباس استایل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dark-mode {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .dark-mode .dark\:bg-gray-800 {
+            background-color: #2d3748;
+        }
+        .dark-mode .dark\:text-white {
+            color: #fff;
+        }
+        .dark-mode .dark\:border-gray-700 {
+            border-color: #4a5568;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans transition-colors duration-300">
+    <!-- Header -->
+    <header class="bg-white shadow-md dark:bg-gray-800 dark:text-white transition-colors duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <a href="#" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">استایل</a>
+                <nav class="hidden md:flex space-x-6 space-x-reverse">
+                    <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">خانه</a>
+                    <a href="#products" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">محصولات</a>
+                    <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">درباره ما</a>
+                    <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">تماس با ما</a>
+                </nav>
+            </div>
+            
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                
+                <div class="relative">
+                    <button id="cart-btn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="cart-badge hidden">0</span>
+                    </button>
+                </div>
+                
+                <button id="auth-btn" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+                    ورود / ثبت نام
+                </button>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg transition-colors duration-300">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#" class="py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition">خانه</a>
+                <a href="#products" class="py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition">محصولات</a>
+                <a href="#about" class="py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition">درباره ما</a>
+                <a href="#contact" class="py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition">تماس با ما</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">مد روز را با ما تجربه کنید</h1>
+                <p class="text-xl mb-6">بهترین و با کیفیت ترین لباس ها با مناسب ترین قیمت</p>
+                <a href="#products" class="bg-white text-indigo-600 px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition inline-block">مشاهده محصولات</a>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Fashion Models" class="rounded-lg shadow-xl w-full h-auto max-h-96 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">محصولات ویژه</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
+                             alt="Men's Jacket" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-2 left-2 bg-indigo-600 text-white px-2 py-1 rounded text-xs">جدید</div>
+                    </div>
+                    <div class="p-4 dark:text-white">
+                        <h3 class="font-semibold text-lg mb-2">کت مردانه زمستانی</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 dark:text-indigo-400 font-bold">1,290,000 تومان</span>
+                            <button class="add-to-cart bg-gray-200 dark:bg-gray-600 hover:bg-indigo-600 hover:text-white px-3 py-1 rounded-full transition" 
+                                    data-id="1" data-name="کت مردانه زمستانی" data-price="1290000">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=734&q=80" 
+                             alt="Women's Dress" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-4 dark:text-white">
+                        <h3 class="font-semibold text-lg mb-2">لباس زنانه مجلسی</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 dark:text-indigo-400 font-bold">2,450,000 تومان</span>
+                            <button class="add-to-cart bg-gray-200 dark:bg-gray-600 hover:bg-indigo-600 hover:text-white px-3 py-1 rounded-full transition" 
+                                    data-id="2" data-name="لباس زنانه مجلسی" data-price="2450000">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                             alt="Men's Shirt" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs">%15 تخفیف</div>
+                    </div>
+                    <div class="p-4 dark:text-white">
+                        <h3 class="font-semibold text-lg mb-2">پیراهن مردانه رسمی</h3>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 dark:text-gray-300 line-through text-sm mr-2">650,000 تومان</span>
+                                <span class="text-indigo-600 dark:text-indigo-400 font-bold">552,500 تومان</span>
+                            </div>
+                            <button class="add-to-cart bg-gray-200 dark:bg-gray-600 hover:bg-indigo-600 hover:text-white px-3 py-1 rounded-full transition" 
+                                    data-id="3" data-name="پیراهن مردانه رسمی" data-price="552500">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Women's Shoes" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-4 dark:text-white">
+                        <h3 class="font-semibold text-lg mb-2">کفش زنانه اسپرت</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 dark:text-indigo-400 font-bold">890,000 تومان</span>
+                            <button class="add-to-cart bg-gray-200 dark:bg-gray-600 hover:bg-indigo-600 hover:text-white px-3 py-1 rounded-full transition" 
+                                    data-id="4" data-name="کفش زنانه اسپرت" data-price="890000">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block border-2 border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 px-6 py-2 rounded-md font-semibold hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 dark:hover:text-gray-900 transition">
+                    مشاهده همه محصولات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">درباره ما</h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1515&q=80" 
+                         alt="About Us" class="rounded-lg shadow-lg w-full h-auto">
+                </div>
+                <div class="md:w-1/2 dark:text-gray-300">
+                    <h3 class="text-2xl font-semibold mb-4 dark:text-white">تاریخچه فروشگاه استایل</h3>
+                    <p class="mb-4 leading-relaxed">
+                        فروشگاه استایل در سال 1390 با هدف ارائه بهترین محصولات مد و پوشاک با کیفیت عالی و قیمت مناسب تأسیس شد. ما با بهره گیری از سال ها تجربه در صنعت پوشاک و مد، همواره سعی کرده ایم نیازهای مشتریان خود را به بهترین شکل ممکن برآورده کنیم.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        تیم ما متشکل از طراحان و متخصصان مجربی است که با دقت و حساسیت بالا، محصولاتی با کیفیت و مطابق با آخرین ترندهای جهانی را برای شما عزیزان انتخاب و عرضه می کنند.
+                    </p>
+                    <p class="leading-relaxed">
+                        اعتماد شما سرمایه ماست و ما همواره در تلاش هستیم تا با ارائه محصولات باکیفیت و خدمات پس از فروش عالی، این اعتماد را حفظ کنیم.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <div class="flex items-center bg-white dark:bg-gray-800 px-4 py-2 rounded-md shadow-sm">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>ضمانت اصالت کالا</span>
+                        </div>
+                        <div class="flex items-center bg-white dark:bg-gray-800 px-4 py-2 rounded-md shadow-sm">
+                            <i class="fas fa-truck text-blue-500 mr-2"></i>
+                            <span>ارسال سریع و رایگان</span>
+                        </div>
+                        <div class="flex items-center bg-white dark:bg-gray-800 px-4 py-2 rounded-md shadow-sm">
+                            <i class="fas fa-exchange-alt text-purple-500 mr-2"></i>
+                            <span>7 روز ضمانت بازگشت</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">تماس با ما</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 dark:text-gray-300">
+                    <h3 class="text-2xl font-semibold mb-4 dark:text-white">اطلاعات تماس</h3>
+                    <p class="mb-6">برای دریافت مشاوره رایگان و پاسخ به سوالات خود می توانید با ما در تماس باشید.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-600 dark:text-indigo-400 mt-1 ml-2"></i>
+                            <div>
+                                <h4 class="font-semibold">آدرس</h4>
+                                <p>تهران، خیابان ولیعصر، پلاک 1234، طبقه دوم</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-indigo-600 dark:text-indigo-400 mt-1 ml-2"></i>
+                            <div>
+                                <h4 class="font-semibold">تلفن</h4>
+                                <p>021-12345678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-indigo-600 dark:text-indigo-400 mt-1 ml-2"></i>
+                            <div>
+                                <h4 class="font-semibold">ایمیل</h4>
+                                <p>info@style-shop.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-indigo-600 dark:text-indigo-400 mt-1 ml-2"></i>
+                            <div>
+                                <h4 class="font-semibold">ساعات کاری</h4>
+                                <p>شنبه تا چهارشنبه: 9 صبح تا 6 عصر<br>پنجشنبه: 9 صبح تا 2 بعدازظهر</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="font-semibold mb-2 dark:text-white">ما را در شبکه های اجتماعی دنبال کنید</h4>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 dark:hover:text-gray-900 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 dark:hover:text-gray-900 transition">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 dark:hover:text-gray-900 transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 dark:hover:text-gray-900 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form id="contact-form" class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4 dark:text-white">فرم تماس با ما</h3>
+                        
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 dark:text-gray-300">نام و نام خانوادگی</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 dark:text-gray-300">آدرس ایمیل</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="phone" class="block mb-2 dark:text-gray-300">شماره تماس</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block mb-2 dark:text-gray-300">موضوع</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white" required>
+                                <option value="">انتخاب کنید</option>
+                                <option value="order">پیگیری سفارش</option>
+                                <option value="product">پرسش درباره محصول</option>
+                                <option value="return">مرجوعی کالا</option>
+                                <option value="other">سایر</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block mb-2 dark:text-gray-300">پیام شما</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">ارسال پیام</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">فروشگاه استایل</h3>
+                    <p class="text-gray-400">ارائه کننده بهترین و با کیفیت ترین محصولات مد و پوشاک با قیمت مناسب و خدمات پس از فروش عالی.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">لینک های مفید</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">خانه</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition">محصولات</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">درباره ما</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">تماس با ما</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">خدمات مشتریان</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">سوالات متداول</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">شرایط بازگشت کالا</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">روش های پرداخت</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">حریم خصوصی</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">خبرنامه</h3>
+                    <p class="text-gray-400 mb-4">با عضویت در خبرنامه از جدیدترین محصولات و تخفیف ها با خبر شوید.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="آدرس ایمیل" class="px-3 py-2 rounded-r-md focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-l-md hover:bg-indigo-700 transition">عضویت</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>کلیه حقوق این سایت متعلق به فروشگاه استایل می باشد. © 1402</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4 overflow-hidden transition-colors duration-300">
+            <div class="flex justify-between items-center border-b dark:border-gray-700 px-6 py-4">
+                <h3 class="text-xl font-semibold dark:text-white" id="auth-modal-title">ورود به حساب کاربری</h3>
+                <button id="close-auth-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="p-6">
+                <div id="login-form">
+                    <form id="login-form-element">
+                        <div class="mb-4">
+                            <label for="login-email" class="block mb-2 dark:text-gray-300">آدرس ایمیل</label>
+                            <input type="email" id="login-email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="login-password" class="block mb-2 dark:text-gray-300">رمز عبور</label>
+                            <input type="password" id="login-password" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                                <label for="remember-me" class="mr-2 block text-sm dark:text-gray-300">مرا به خاطر بسپار</label>
+                            </div>
+                            <a href="#" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">فراموشی رمز عبور</a>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition mb-4">ورود</button>
+                        
+                        <div class="text-center">
+                            <p class="text-sm dark:text-gray-300">حساب کاربری ندارید؟ 
+                                <button type="button" id="show-register" class="text-indigo-600 dark:text-indigo-400 hover:underline">ثبت نام کنید</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="register-form" class="hidden">
+                    <form id="register-form-element">
+                        <div class="mb-4">
+                            <label for="register-name" class="block mb-2 dark:text-gray-300">نام و نام خانوادگی</label>
+                            <input type="text" id="register-name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="register-email" class="block mb-2 dark:text-gray-300">آدرس ایمیل</label>
+                            <input type="email" id="register-email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="register-phone" class="block mb-2 dark:text-gray-300">شماره موبایل</label>
+                            <input type="tel" id="register-phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="register-password" class="block mb-2 dark:text-gray-300">رمز عبور</label>
+                            <input type="password" id="register-password" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="register-confirm-password" class="block mb-2 dark:text-gray-300">تکرار رمز عبور</label>
+                            <input type="password" id="register-confirm-password" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white" required>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition mb-4">ثبت نام</button>
+                        
+                        <div class="text-center">
+                            <p class="text-sm dark:text-gray-300">قبلاً ثبت نام کرده اید؟ 
+                                <button type="button" id="show-login" class="text-indigo-600 dark:text-indigo-400 hover:underline">وارد شوید</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white dark:bg-gray-800 shadow-lg transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+        <div class="flex justify-between items-center border-b dark:border-gray-700 px-6 py-4">
+            <h3 class="text-xl font-semibold dark:text-white">سبد خرید</h3>
+            <button id="close-cart" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="p-6">
+            <!-- Cart items will be added here dynamically -->
+            <div id="empty-cart-message" class="text-center py-8">
+                <i class="fas fa-shopping-cart text-4xl text-gray-400 mb-4"></i>
+                <p class="text-gray-500 dark:text-gray-400">سبد خرید شما خالی است</p>
+            </div>
+        </div>
+        
+        <div class="border-t dark:border-gray-700 p-6">
+            <div class="flex justify-between mb-4">
+                <span class="font-semibold dark:text-gray-300">جمع کل:</span>
+                <span id="cart-total" class="font-bold dark:text-white">0 تومان</span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition disabled:opacity-50" disabled>
+                پرداخت
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg transform translate-y-16 opacity-0 transition-all duration-300 z-50 flex items-center hidden">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span id="toast-message">عملیات با موفقیت انجام شد</span>
+    </div>
+
+    <script>
+        // DOM Elements
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const authBtn = document.getElementById('auth-btn');
+        const authModal = document.getElementById('auth-modal');
+        const closeAuthModal = document.getElementById('close-auth-modal');
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const authModalTitle = document.getElementById('auth-modal-title');
+        const cartBtn = document.getElementById('cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartTotal = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const cartCount = document.getElementById('cart-count');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const successToast = document.getElementById('success-toast');
+        const toastMessage = document.getElementById('toast-message');
+        const loginFormElement = document.getElementById('login-form-element');
+        const registerFormElement = document.getElementById('register-form-element');
+        const contactForm = document.getElementById('contact-form');
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Auth Modal
+        authBtn.addEventListener('click', () => {
+            authModal.classList.remove('hidden');
+        });
+
+        closeAuthModal.addEventListener('click', () => {
+            authModal.classList.add('hidden');
+        });
+
+        showRegister.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+            authModalTitle.textContent = 'ثبت نام';
+        });
+
+        showLogin.addEventListener('click', () => {
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+            authModalTitle.textContent = 'ورود به حساب کاربری';
+        });
+
+        // Cart Sidebar
+        cartBtn.addEventListener('click', () => {
+            cartSidebar.style.transform = 'translateX(0)';
+            updateCartUI();
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.style.transform = 'translateX(100%)';
+        });
+
+        // Initialize cart if not exists
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+
+        // Add to Cart
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-id');
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseInt(button.getAttribute('data-price'));
+                
+                let cart = JSON.parse(localStorage.getItem('cart'));
+                
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1
+                    });
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                showToast('محصول به سبد خرید اضافه شد');
+            });
+        });
+
+        // Update Cart Count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart'));
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const cart = JSON.parse(localStorage.getItem('cart'));
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartItems.innerHTML = '';
+                cartTotal.textContent = '0 تومان';
+                checkoutBtn.disabled = true;
+                return;
+            }
+            
+            emptyCartMessage.classList.add('hidden');
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                itemsHTML += `
+                    <div class="flex justify-between items-center mb-4 pb-4 border-b dark:border-gray-700">
+                        <div>
+                            <h4 class="font-medium dark:text-white">${item.name}</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">${item.price.toLocaleString()} تومان</p>
+                        </div>
+                        <div class="flex items-center">
+                            <button class="decrease-quantity px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-l-md" data-id="${item.id}">-</button>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 dark:text-white">${item.quantity}</span>
+                            <button class="increase-quantity px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-r-md" data-id="${item.id}">+</button>
+                            <button class="remove-item text-red-500 hover:text-red-700 dark:hover:text-red-400 mr-2" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `${total.toLocaleString()} تومان`;
+            checkoutBtn.disabled = false;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', () => {
+                    updateQuantity(button.getAttribute('data-id'), -1);
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', () => {
+                    updateQuantity(button.getAttribute('data-id'), 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', () => {
+                    removeItem(button.getAttribute('data-id'));
+                });
+            });
+        }
+
+        // Update Quantity
+        function updateQuantity(productId, change) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            const itemIndex = cart.findIndex(item => item.id === productId);
+            
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += change;
+                
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartUI();
+                updateCartCount();
+            }
+        }
+
+        // Remove Item
+        function removeItem(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            cart = cart.filter(item => item.id !== productId);
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+            updateCartCount();
+            showToast('محصول از سبد خرید حذف شد');
+        }
+
+        // Show Toast
+        function showToast(message) {
+            toastMessage.textContent = message;
+            successToast.classList.remove('hidden');
+            successToast.classList.remove('opacity-0');
+            successToast.classList.remove('translate-y-16');
+            
+            setTimeout(() => {
+                successToast.classList.add('opacity-0');
+                successToast.classList.add('translate-y-16');
+                setTimeout(() => successToast.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        // Checkout
+        checkoutBtn.addEventListener('click', () => {
+            if (localStorage.getItem('user')) {
+                showToast('پرداخت با موفقیت انجام شد');
+                localStorage.setItem('cart', JSON.stringify([]));
+                updateCartUI();
+                updateCartCount();
+                cartSidebar.style.transform = 'translateX(100%)';
+            } else {
+                showToast('لطفاً ابتدا وارد حساب کاربری خود شوید');
+                authModal.classList.remove('hidden');
+                cartSidebar.style.transform = 'translateX(100%)';
+            }
+        });
+
+        // User Registration
+        registerFormElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const phone = document.getElementById('register-phone').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                showToast('رمز عبور و تکرار آن مطابقت ندارند');
+                return;
+            }
+            
+            const user = {
+                name,
+                email,
+                phone,
+                password
+            };
+            
+            localStorage.setItem('user', JSON.stringify(user));
+            showToast('ثبت نام با موفقیت انجام شد');
+            authModal.classList.add('hidden');
+            registerFormElement.reset();
+            
+            // Switch to login form
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+            authModalTitle.textContent = 'ورود به حساب کاربری';
+        });
+
+        // User Login
+        loginFormElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            const user = JSON.parse(localStorage.getItem('user'));
+            
+            if (!user || user.email !== email || user.password !== password) {
+                showToast('ایمیل یا رمز عبور اشتباه است');
+                return;
+            }
+            
+            showToast('ورود با موفقیت انجام شد');
+            authModal.classList.add('hidden');
+            loginFormElement.reset();
+            
+            // Update auth button
+            authBtn.innerHTML = `
+                <i class="fas fa-user-circle mr-2"></i>
+                ${user.name}
+            `;
+        });
+
+        // Check if user is logged in on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                authBtn.innerHTML = `
+                    <i class="fas fa-user-circle mr-2"></i>
+                    ${user.name}
+                `;
+            }
+        });
+
+        // Contact Form Submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('پیام شما با موفقیت ارسال شد');
+            contactForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Image hover effect
+        document.querySelectorAll('.product-img-container').forEach(container => {
+            const img = container.querySelector('img');
+            const secondImg = img.getAttribute('data-second-img');
+            
+            if (secondImg) {
+                container.addEventListener('mouseenter', () => {
+                    img.src = secondImg;
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    img.src = img.getAttribute('data-original-img');
+                });
+            }
+        });
+
+        // Fade in elements on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>
